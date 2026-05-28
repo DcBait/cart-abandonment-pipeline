@@ -31,6 +31,8 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   cart_abandonment:
+    staging:
+      +materialized: view
     # Config indicated by + and applies to all files under models/example/
-    example:
+    intermediate:
       +materialized: view
