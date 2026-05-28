@@ -1,0 +1,43 @@
+[0m07:05:19.653182 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7915f8f5c890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7915f7558530>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7915f6f88200>]}
+
+
+============================== 07:05:19.659421 | 95919693-054f-4482-acc9-4361551c48f0 ==============================
+[0m07:05:19.659421 [info ] [MainThread]: Running with dbt=1.11.11
+[0m07:05:19.660824 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'profiles_dir': '/home/juansebastianalexander/.dbt', 'log_format': 'default', 'fail_fast': 'False', 'send_anonymous_usage_stats': 'True', 'partial_parse': 'True', 'debug': 'False', 'write_json': 'True', 'introspect': 'True', 'log_path': 'logs', 'invocation_command': 'dbt init cart_abandonment', 'empty': 'None', 'warn_error': 'None', 'no_print': 'None', 'use_colors': 'True', 'static_parser': 'True', 'printer_width': '80', 'log_cache_events': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'cache_selected_only': 'False', 'target_path': 'None', 'indirect_selection': 'eager', 'quiet': 'False', 'use_experimental_parser': 'False'}
+[0m07:05:19.700195 [info ] [MainThread]: Creating dbt configuration folder at /home/juansebastianalexander/.dbt
+[0m07:05:19.702869 [debug] [MainThread]: Starter project path: /home/juansebastianalexander/.local/lib/python3.12/site-packages/dbt/include/starter_project
+[0m07:05:19.706601 [info ] [MainThread]: 
+Your new dbt project "cart_abandonment" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m07:05:19.707492 [info ] [MainThread]: Setting up your profile.
+[0m07:08:56.724293 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x799d133314f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x799d1308eba0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x799d12fa2de0>]}
+
+
+============================== 07:08:56.730676 | e9f33d9e-297f-46bf-811e-0744e18b75fd ==============================
+[0m07:08:56.730676 [info ] [MainThread]: Running with dbt=1.11.11
+[0m07:08:56.732003 [debug] [MainThread]: running dbt with arguments {'use_experimental_parser': 'False', 'target_path': 'None', 'no_print': 'None', 'debug': 'False', 'quiet': 'False', 'version_check': 'True', 'partial_parse': 'True', 'static_parser': 'True', 'fail_fast': 'False', 'warn_error': 'None', 'invocation_command': 'dbt init cart_abandonment', 'use_colors': 'True', 'send_anonymous_usage_stats': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'write_json': 'True', 'log_format': 'default', 'profiles_dir': '/home/juansebastianalexander/.dbt', 'indirect_selection': 'eager', 'log_path': 'logs', 'introspect': 'True', 'printer_width': '80', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False'}
+[0m07:08:56.747435 [info ] [MainThread]: A project called cart_abandonment already exists here.
+[0m07:08:56.750004 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 0.12746191, "process_in_blocks": "0", "process_kernel_time": 0.30212, "process_mem_max_rss": "103592", "process_out_blocks": "8", "process_user_time": 2.397767}
+[0m07:08:56.751534 [debug] [MainThread]: Command `dbt init` succeeded at 07:08:56.751223 after 0.13 seconds
+[0m07:08:56.752782 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x799d12aa9070>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x799d129916a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x799d12334c80>]}
+[0m07:08:56.754338 [debug] [MainThread]: Flushing usage events
+[0m07:08:57.730194 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m07:09:28.602156 [info ] [MainThread]: Profile cart_abandonment written to /home/juansebastianalexander/.dbt/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m07:09:28.604443 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 249.06432, "process_in_blocks": "14192", "process_kernel_time": 0.674297, "process_mem_max_rss": "215280", "process_out_blocks": "80", "process_user_time": 4.559725}
+[0m07:09:28.606242 [debug] [MainThread]: Command `dbt init` succeeded at 07:09:28.605994 after 249.07 seconds
+[0m07:09:28.607034 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7915f6ab5010>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7915de17a540>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7915ddfc5730>]}
+[0m07:09:28.607783 [debug] [MainThread]: Flushing usage events
+[0m07:09:29.537469 [debug] [MainThread]: An error was encountered while trying to flush usage events
