@@ -8,7 +8,8 @@ sources:
     tables:
       - name: events_*
         description: "Raw GA4 event data, one row per event, partitioned by date suffix"
-        freshness:
-          warn_after: {count: 3, period: day}
-          error_after: {count: 7, period: day}
-        loaded_at_field: "TIMESTAMP_MICROS(event_timestamp)"
+        config:
+          freshness:
+            warn_after: {count: 3, period: day}
+            error_after: {count: 7, period: day}
+          loaded_at_field: "TIMESTAMP_MICROS(event_timestamp)"
