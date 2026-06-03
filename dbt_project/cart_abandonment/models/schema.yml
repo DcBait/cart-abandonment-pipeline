@@ -16,8 +16,8 @@ models:
         description: "GA4 event name"
         tests:
           - not_null
-      - accepted_values:
-              values: ['page_view', 'view_item', 'add_to_cart', 'checkout', 'purchase']
+          - accepted_values:
+              values: ['page_view', 'view_item', 'add_to_cart', 'begin_checkout', 'purchase']
 
   - name: int_sessions
     description: "Session construction using 30-minute inactivity window per user"
@@ -62,5 +62,4 @@ models:
         tests:
           - not_null
           - accepted_values:
-              arguments:
-                values: ['page_view', 'view_item', 'add_to_cart', 'checkout', 'purchase']
+              values: ['page_view', 'view_item', 'add_to_cart', 'checkout', 'purchase']
