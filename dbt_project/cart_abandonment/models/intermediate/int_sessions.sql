@@ -34,7 +34,8 @@ session_ids AS (
             ) AS STRING)
         ) AS session_id
     FROM session_flags
-)
+),
+
 first_touch AS (
     SELECT
         session_id,
@@ -58,7 +59,7 @@ last_touch AS (
         WHERE s2.session_id = session_ids.session_id
     )
 )
-    
+
 SELECT
     s.*,
     ft.first_touch_source,
