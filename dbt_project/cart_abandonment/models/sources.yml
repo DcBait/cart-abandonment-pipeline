@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: ga4
+    database: bigquery-public-data
+    schema: ga4_obfuscated_sample_ecommerce
+    description: "GA4 obfuscated e-commerce sample dataset from BigQuery public data"
+    tables:
+      - name: events_*
+        description: "Raw GA4 event data, one row per event, partitioned by date suffix"
+        freshness:
+          warn_after: {count: 3, period: day}
+          error_after: {count: 7, period: day}
+        loaded_at_field: "TIMESTAMP_MICROS(event_timestamp)"
