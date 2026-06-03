@@ -35,4 +35,18 @@ funnel_stage AS (
     FROM session_funnel
 )
 
-SELECT * FROM funnel_stage
+SELECT
+    session_id,
+    user_id,
+    session_start,
+    session_end,
+    device_type,
+    traffic_source,
+    country,
+    funnel_stage,
+    reached_page_view,
+    reached_view_item,
+    reached_add_to_cart,
+    reached_checkout,
+    reached_purchase
+FROM funnel_stage
