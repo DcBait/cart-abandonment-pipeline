@@ -6,7 +6,7 @@ WITH raw AS (
         device.category                         AS device_type,
         traffic_source.source                   AS traffic_source,
         geo.country                             AS country
-    FROM `bigquery-public-data.ga4_obfuscated_sample_ecommerce.events_*`
+    FROM {{ source('ga4', 'events_*') }}
     WHERE event_name IN (
         'page_view',
         'view_item',
