@@ -1,3 +1,10 @@
+{{
+    config(
+        materialized='incremental',
+        unique_key='session_id',
+        incremental_strategy='merge'
+    )
+}}
 WITH sessions AS (
     SELECT * FROM {{ ref('int_sessions') }}
 ),
@@ -19,6 +26,11 @@ session_funnel AS (
         MAX(CASE WHEN event_name = 'purchase'        THEN 1 ELSE 0 END)     AS reached_purchase
 
     FROM sessions
+
+    {% if is_incremental() %}
+        WHERE session_start >= DATE_SUB(CURRENT_DATE(), INTERVAL 3 DAY)
+    {% endif %}
+
     GROUP BY session_id, user_id
 ),
 
@@ -44,6 +56,7 @@ SELECT
     traffic_source,
     country,
     funnel_stage,
+    stage_order,
     reached_page_view,
     reached_view_item,
     reached_add_to_cart,
