@@ -34,6 +34,12 @@ models:
         description: "Timestamp of the individual event within the session"
         tests:
           - not_null
+      - name: first_touch_source
+        description: "Traffic source from the first event in the session"
+        tests:
+          - not_null
+      - name: last_touch_source
+        description: "Traffic source from the last event in the session"
 
   - name: mart_funnel
     description: "Session-level funnel stage classification. Each session is assigned its deepest reached funnel stage."
@@ -47,9 +53,13 @@ models:
         description: "Device-level user identifier"
         tests:
           - not_null
+      - name: stage_order
+        description: "Numeric sort order for funnel stage (1-5)"
+        tests:
+          - not_null
       - name: funnel_stage
         description: "Deepest funnel stage reached in the session"
         tests:
           - not_null
           - accepted_values:
-              values: ['1_page_view', '2_view_item', '3_add_to_cart', '4_checkout', '5_purchase']
+              values: ['page_view', 'view_item', 'add_to_cart', 'checkout', 'purchase']
