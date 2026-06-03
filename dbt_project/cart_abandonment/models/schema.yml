@@ -1,0 +1,55 @@
+version: 2
+
+models:
+  - name: stg_events
+    description: "Filtered and cast raw GA4 events. user_id is device-level (user_pseudo_id), not true user identity."
+    columns:
+      - name: user_id
+        description: "Device-level user identifier from GA4 (user_pseudo_id)"
+        tests:
+          - not_null
+      - name: event_ts
+        description: "Event timestamp cast from microseconds to TIMESTAMP"
+        tests:
+          - not_null
+      - name: event_name
+        description: "GA4 event name"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['page_view', 'view_item', 'add_to_cart', 'begin_checkout', 'purchase']
+
+  - name: int_sessions
+    description: "Session construction using 30-minute inactivity window per user"
+    columns:
+      - name: session_id
+        description: "Unique session identifier — composite of user_id and session count"
+        tests:
+          - not_null
+      - name: user_id
+        description: "Device-level user identifier"
+        tests:
+          - not_null
+      - name: event_ts
+        description: "Timestamp of the individual event within the session"
+        tests:
+          - not_null
+
+  - name: mart_funnel
+    description: "Session-level funnel stage classification. Each session is assigned its deepest reached funnel stage."
+    columns:
+      - name: session_id
+        description: "Unique session identifier"
+        tests:
+          - not_null
+          - unique
+      - name: user_id
+        description: "Device-level user identifier"
+        tests:
+          - not_null
+      - name: funnel_stage
+        description: "Deepest funnel stage reached in the session"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['1_page_view', '2_view_item', '3_add_to_cart', '4_checkout', '5_purchase']
