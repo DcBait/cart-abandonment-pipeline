@@ -33,7 +33,18 @@ session_funnel AS (
 
 funnel_stage AS (
     SELECT
-        *,
+        session_id,
+        user_id,
+        session_start,
+        session_end,
+        device_type,
+        traffic_source,
+        country,
+        reached_page_view,
+        reached_view_item,
+        reached_add_to_cart,
+        reached_checkout,
+        reached_purchase,
         CASE
             WHEN reached_purchase     = 1 THEN 'purchase'
             WHEN reached_checkout     = 1 THEN 'checkout'
