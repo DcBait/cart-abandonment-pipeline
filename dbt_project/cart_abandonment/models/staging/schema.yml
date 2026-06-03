@@ -1,0 +1,25 @@
+version: 2
+
+sources:
+  - name: ga4
+    database: bigquery-public-data
+    schema: ga4_obfuscated_sample_ecommerce
+    tables:
+      - name: events_*
+
+models:
+  - name: stg_events
+    description: "Filtered and cleaned GA4 events for cart funnel analysis"
+    columns:
+      - name: user_id
+        description: "GA4 user pseudo ID"
+        tests:
+          - not_null
+      - name: event_ts
+        tests:
+          - not_null
+      - name: event_name
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['page_view', 'view_item', 'add_to_cart', 'begin_checkout', 'purchase']
