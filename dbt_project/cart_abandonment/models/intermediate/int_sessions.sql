@@ -35,5 +35,34 @@ session_ids AS (
         ) AS session_id
     FROM session_flags
 )
+first_touch AS (
+    SELECT
+        session_id,
+        traffic_source AS first_touch_source
+    FROM session_ids
+    WHERE event_ts = (
+        SELECT MIN(s2.event_ts)
+        FROM session_ids s2
+        WHERE s2.session_id = session_ids.session_id
+    )
+),
 
-SELECT * FROM session_ids
+last_touch AS (
+    SELECT
+        session_id,
+        traffic_source AS last_touch_source
+    FROM session_ids
+    WHERE event_ts = (
+        SELECT MAX(s2.event_ts)
+        FROM session_ids s2
+        WHERE s2.session_id = session_ids.session_id
+    )
+)
+    
+SELECT
+    s.*,
+    ft.first_touch_source,
+    lt.last_touch_source
+FROM session_ids s
+LEFT JOIN first_touch ft ON s.session_id = ft.session_id
+LEFT JOIN last_touch lt  ON s.session_id = lt.session_id
