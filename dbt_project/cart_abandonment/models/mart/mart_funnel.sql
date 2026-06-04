@@ -26,7 +26,7 @@ session_funnel AS (
         MAX(CASE WHEN event_name = 'purchase'        THEN 1 ELSE 0 END)     AS reached_purchase
     FROM sessions
     {% if is_incremental() %}
-        WHERE session_start >= DATE_SUB(CURRENT_DATE(), INTERVAL 3 DAY)
+        WHERE event_ts >= TIMESTAMP(DATE_SUB(CURRENT_DATE(), INTERVAL 3 DAY))
     {% endif %}
     GROUP BY session_id, user_id
 ),
