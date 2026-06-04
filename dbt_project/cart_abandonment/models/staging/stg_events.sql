@@ -7,7 +7,10 @@ WITH raw AS (
         traffic_source.source                   AS traffic_source,
         geo.country                             AS country
     FROM {{ source('ga4', 'events_*') }}
-    WHERE _TABLE_SUFFIX BETWEEN
+-- NOTE: GA4 public dataset is static (Nov 2020 - Jan 2021)
+-- In production, replace with dynamic 90-day lookback:
+-- WHERE _TABLE_SUFFIX >= FORMAT_DATE('%Y%m%d', DATE_SUB(CURRENT_DATE(), INTERVAL 90 DAY))
+    WHERE _TABLE_SUFFIX BETWEEN '20201101' AND '20210131'
         FORMAT_DATE('%Y%m%d', DATE_SUB(CURRENT_DATE(), INTERVAL 90 DAY))
         AND
         FORMAT_DATE('%Y%m%d', CURRENT_DATE())
