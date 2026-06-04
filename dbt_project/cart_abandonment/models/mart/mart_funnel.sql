@@ -31,7 +31,7 @@ session_funnel AS (
     GROUP BY session_id, user_id
 ),
 
-funnel_stage AS (
+funnel_classified AS (
     SELECT
         session_id,
         user_id,
@@ -77,4 +77,4 @@ SELECT
     reached_add_to_cart,
     reached_checkout,
     reached_purchase
-FROM funnel_stage
+FROM funnel_classified
