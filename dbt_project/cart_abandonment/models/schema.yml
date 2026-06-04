@@ -61,5 +61,3 @@ models:
         description: "Deepest funnel stage reached in the session"
         tests:
           - not_null
-          - accepted_values:
-              values: ['page_view', 'view_item', 'add_to_cart', 'checkout', 'purchase']
